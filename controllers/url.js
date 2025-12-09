@@ -6,7 +6,7 @@ async function handleGenerateNewShortURL(req, res){
     if(!body.url) return res.status(400).json({error: "url is requiresd"})
     const shortID = nanoid(8);
     await URL.create({
-        shortId: shortID,
+        shortID: shortID,
         redirectURL: body.url,
         visitHistory: [],
     });
@@ -14,6 +14,15 @@ async function handleGenerateNewShortURL(req, res){
     return res.json({ id: shortID });
 }
 
+async function handleGetAnalytics(req, res) {
+    const shortID = req.params.shortID;
+    const result = await URL.findOne({shortID});
+    return res.json({totalclicks:result.visitHistory.length, 
+        analytics: result.visitHistory,
+});
+}
+
 module.exports = {
     handleGenerateNewShortURL,
+    handleGetAnalytics,
 };
