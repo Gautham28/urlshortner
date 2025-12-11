@@ -1,5 +1,5 @@
 const { nanoid } = require("nanoid");
-const URL = require('../models/user');
+const URL = require('../models/url');
 
 async function handleGenerateNewShortURL(req, res){
     const body = req.body;
@@ -14,7 +14,7 @@ async function handleGenerateNewShortURL(req, res){
     return res.render('home', {
         id: shortID 
     })
-    
+
 }
 
 async function handleGetAnalytics(req, res) {

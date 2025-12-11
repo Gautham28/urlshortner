@@ -1,6 +1,6 @@
 const express = require("express");
 const { connectToMongoDB } = require("./connection")
-const URL = require('./models/user');
+const URL = require('./models/url');
 const path = require('path');
 const staticRoute = require('./routes/staticRouter')
 const urlRoute = require('./routes/url');
